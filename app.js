@@ -1,6 +1,10 @@
-const colors = ["green", "red", "rgba(133, 122, 200)", "#f15025"];
+const colors = ["Purple", "LightBlue", "Green", "Yellow", "Orange", "Red", "Pink", "White"];
 const btn = document.getElementById('btn');
-const color = document.getElementById('color');
+const color = document.querySelector('.color');
+
+//Starting color
+document.body.style.backgroundColor = "Pink";
+color.textContent = "Pink";
 
 btn.addEventListener('click', function() {
     //Get random number between 0 - 3

@@ -7,12 +7,22 @@ document.body.style.backgroundColor = "Pink";
 color.textContent = "Pink";
 
 btn.addEventListener('click', function() {
-    //Get random number between 0 - 3
-    const randomNumber = getRandomNumer();
-    document.body.style.backgroundColor = colors[randomNumber];
-    color.textContent = colors[randomNumber];
+    //Find the index of the current background color
+    const currentColor = color.textContent;
+    const currentNumber = colors.indexOf(currentColor);
+    //Find a different random index number
+    const randomNumber = getDifferentRandomNumer(currentNumber);
+    const randomColor = colors[randomNumber];
+    document.body.style.backgroundColor = randomColor;
+    color.textContent = randomColor;
 })
 
-function getRandomNumer() {
-    return Math.floor(Math.random()*colors.length);
+function getDifferentRandomNumer(currentNumber) {
+    //Check current color and find a different random number, to prevent getting the same color twice
+    const nums = new Set();
+    nums.add(currentNumber);
+    while(nums.size !== 2) {
+        nums.add(Math.floor(Math.random() * colors.length));
+    }
+    return [...nums][1];
 }
